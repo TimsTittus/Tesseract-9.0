@@ -7,8 +7,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-// Set target date to a future date (adjust as needed)
-const TARGET_DATE = new Date('2025-02-15T10:00:00');
+const TARGET_DATE = new Date('2026-01-31T00:00:00');
 
 export const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
