@@ -50,8 +50,8 @@
     --gradient-glow: linear-gradient(180deg, hsl(83 100% 62% / 0.1) 0%, transparent 100%);
     
     /* Shadows */
-    --shadow-glow: 0 0 20px hsl(83 100% 62% / 0.3);
-    --shadow-glow-sm: 0 0 10px hsl(83 100% 62% / 0.2);
+  --shadow-glow: 0 0 12px hsl(83 100% 62% / 0.18);
+  --shadow-glow-sm: 0 0 6px hsl(83 100% 62% / 0.12);
     --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.3);
     
     --sidebar-background: 155 60% 8%;
@@ -142,7 +142,8 @@
   }
 
   .glow-text {
-    text-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary) / 0.5);
+    /* reduced glow intensity */
+    text-shadow: 0 0 6px hsl(var(--primary) / 0.6), 0 0 12px hsl(var(--primary) / 0.25);
   }
 
   .glow-button {
@@ -163,7 +164,7 @@
   /* Section Title */
   .section-title {
     @apply text-4xl md:text-5xl font-bold text-primary font-display tracking-wider text-center;
-    text-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.35);
   }
 
   .section-subtitle {
@@ -172,7 +173,7 @@
 
   .section-underline {
     @apply w-24 h-1 bg-primary mx-auto mt-4 rounded-full;
-    box-shadow: 0 0 15px hsl(var(--primary));
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.6);
   }
 
   /* Countdown */
@@ -182,7 +183,7 @@
 
   .countdown-number {
     @apply text-3xl md:text-5xl font-bold text-primary font-display;
-    text-shadow: 0 0 15px hsl(var(--primary));
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.7);
   }
 
   .countdown-label {
@@ -228,13 +229,13 @@
   }
 
   .nav-link:hover {
-    text-shadow: 0 0 20px hsl(var(--primary));
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.6);
   }
 
   /* Progress Bar */
   .progress-bar {
     @apply h-1 bg-primary rounded-full;
-    box-shadow: 0 0 10px hsl(var(--primary));
+    box-shadow: 0 0 6px hsl(var(--primary) / 0.6);
   }
 
   /* Gallery Image */

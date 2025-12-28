@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const galleryImages = [
   { id: 'img1', src: '/gallery/img8.webp' },
@@ -10,8 +10,30 @@ const galleryImages = [
 ];
 
 export const GallerySection = () => {
-  // show all uploaded gallery images
-  const [visibleImages] = useState(galleryImages.length);
+  // show first 4 on mobile, all on larger screens
+  const [visibleImages, setVisibleImages] = useState(4);
+  const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const check = () => {
+      const mobile = typeof window !== 'undefined' ? window.innerWidth < 768 : true;
+      setIsMobile(mobile);
+      setVisibleImages(mobile ? Math.min(4, galleryImages.length) : galleryImages.length);
+    };
+
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const loadMore = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setVisibleImages((prev) => Math.min(prev + 2, galleryImages.length));
+      setLoading(false);
+    }, 800);
+  };
 
   return (
     <section id="gallery" className="py-20 px-4 relative">
@@ -34,7 +56,7 @@ export const GallerySection = () => {
           {galleryImages.slice(0, visibleImages).map((image, index) => (
             <div
               key={image.id}
-              className="gallery-image animate-fade-in bg-card overflow-hidden rounded-none"
+              className="gallery-image animate-fade-in bg-card overflow-hidden rounded-none relative"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <img
@@ -50,7 +72,27 @@ export const GallerySection = () => {
           ))}
         </div>
 
-        {/* All images are displayed */}
+        {/* Load More Button (mobile only) */}
+        {isMobile && visibleImages < galleryImages.length && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={loadMore}
+              disabled={loading}
+              className="glass-card glow-button px-8 py-4 font-mono text-primary hover:border-primary/50 transition-all duration-300 disabled:opacity-50 rounded-none"
+            >
+              {loading ? (
+                <span>
+                  <span className="text-primary">&gt;</span> Loading
+                  <span className="animate-blink">...</span>
+                </span>
+              ) : (
+                <span>
+                  <span className="text-primary">&gt;</span> More memories
+                </span>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
