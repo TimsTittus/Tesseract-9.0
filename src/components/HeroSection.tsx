@@ -1,5 +1,6 @@
 // use static logo from public folder
 import { Countdown } from './Countdown';
+import TextType from './text/TextType';
 import { PixelArtScene } from './PixelArtScene';
 
 export const HeroSection = () => {
@@ -11,27 +12,27 @@ export const HeroSection = () => {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-30 pointer-events-none" />
       
-      {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-20 pb-8 relative z-10">
-        {/* Logo (static image from public/) */}
         <img
           src="/tesseractlogo.png"
           alt="Tesseract 9.0 logo"
           className="w-20 h-20 md:w-28 md:h-28 mb-6 animate-float object-contain"
         />
         
-        {/* Main Title */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-primary tracking-wider text-center glow-text mb-8">
           TESSERACT 9.0
         </h1>
         
-        {/* Coming Soon Box */}
         <div className="glass-card glow-border px-8 md:px-16 py-4 md:py-6 mb-10 relative">
-          <span className="text-xl md:text-3xl font-display font-bold text-primary tracking-widest typing-cursor">
-            COMING SOON
-          </span>
+          <TextType
+            text={["COMING SOON"]}
+            typingSpeed={65}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-1xl md:text-3xl lg:text-4xl font-display font-bold text-primary tracking-widest"
+          />
           
-          {/* Decorative Space Invader */}
           <div className="absolute -right-12 md:-right-16 top-1/2 -translate-y-1/2 text-primary opacity-80">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
               <rect x="8" y="4" width="4" height="4" />
@@ -55,11 +56,9 @@ export const HeroSection = () => {
           </div>
         </div>
         
-        {/* Countdown Timer */}
         <Countdown />
       </div>
       
-      {/* Pixel Art Footer */}
       <div className="relative z-10 mt-auto">
         <PixelArtScene />
       </div>

@@ -1,0 +1,23 @@
+.text-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.text-type__content {
+  white-space: pre;
+}
+
+.text-type__cursor {
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  opacity: 0 !important;
+}
+
+/* allow consumers to tweak cursor via class */
+.text-type__cursor.custom-cursor {
+  font-weight: 700;
+}
