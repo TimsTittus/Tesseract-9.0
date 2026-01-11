@@ -215,20 +215,22 @@ const Dashboard = () => {
               </span>
             </div>
 
-            <div className="p-6 space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
-                  <User className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-display text-primary truncate">
-                    {profile?.full_name || 'User'}
-                  </h2>
-                  <p className="text-sm text-muted-foreground font-mono">Welcome back</p>
+            <div className="p-4 sm:p-6 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="flex items-center gap-4 flex-1 min-w-0">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center shrink-0">
+                    <User className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 className="text-base sm:text-lg font-display text-primary break-words">
+                      {profile?.full_name || 'User'}
+                    </h2>
+                    <p className="text-sm text-muted-foreground font-mono">Welcome back</p>
+                  </div>
                 </div>
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center gap-2 px-3 py-2 border border-destructive/50 bg-destructive/10 rounded font-mono text-sm text-destructive hover:bg-destructive/20"
+                  className="flex items-center justify-center gap-2 px-3 py-2 border border-destructive/50 bg-destructive/10 rounded font-mono text-sm text-destructive hover:bg-destructive/20 shrink-0"
                 >
                   <LogOut className="w-4 h-4" />
                   SIGN OUT
