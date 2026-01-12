@@ -1,0 +1,10 @@
+# Supabase Edge Functions Configuration
+# Reference: https://supabase.com/docs/guides/functions/configuration
+
+[functions.create-order]
+# Disable JWT verification as we handle auth internally via service role
+verify_jwt = false
+
+[functions.verify-payment]
+# Disable JWT verification as we verify payment signature manually
+verify_jwt = false

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X, LogIn } from 'lucide-react';
 
 const navItems = [
   { label: 'HOME', href: '#home' },
@@ -9,6 +10,7 @@ const navItems = [
 ];
 
 export const Navigation = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -41,6 +43,11 @@ export const Navigation = () => {
     }
   };
 
+  const handleLoginClick = () => {
+    setIsOpen(false);
+    navigate('/login');
+  };
+
   return (
     <>
       {/* Menu Button */}
@@ -69,17 +76,25 @@ export const Navigation = () => {
                 <li key={item.href}>
                   <button
                     onClick={() => handleNavClick(item.href)}
-                    className={`nav-link ${
-                      activeSection === item.href.slice(1)
+                    className={`nav-link ${activeSection === item.href.slice(1)
                         ? 'text-primary glow-text'
                         : ''
-                    }`}
+                      }`}
                   >
                     <span className="text-primary/60">&gt;</span>
                     {item.label}
                   </button>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={handleLoginClick}
+                  className="nav-link group"
+                >
+                  <LogIn className="w-5 h-5 md:w-6 md:h-6 text-primary/60 group-hover:text-primary transition-colors" />
+                  LOGIN
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
